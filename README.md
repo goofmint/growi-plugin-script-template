@@ -7,11 +7,10 @@ This is a template for creating a GROWI script plugin.
 ### Download or folk this repository.
 
 ```bash
-
+git clone git@github.com:goofmint/growi-plugin-script-template.git
 ```
 
 ### Change the name of the plugin in package.json.
-
 
 ```js
 {
@@ -23,6 +22,8 @@ This is a template for creating a GROWI script plugin.
 ```
 
 ### Edit those files
+
+Of course, you can add or remove files as you like.
 
 - client-entry.tsx
 - src/Hello.tsx
