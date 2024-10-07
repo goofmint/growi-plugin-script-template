@@ -7,6 +7,8 @@ declare const growiFacade : {
     optionsGenerators: {
       customGenerateViewOptions: (path: string, options: Options, toc: Func) => ViewOptions,
       generateViewOptions: (path: string, options: Options, toc: Func) => ViewOptions,
+      generatePreviewOptions: (path: string, options: Options, toc: Func) => ViewOptions,
+      customGeneratePreviewOptions: (path: string, options: Options, toc: Func) => ViewOptions,
     },
   },
 };
@@ -18,11 +20,20 @@ const activate = (): void => {
 
   const { optionsGenerators } = growiFacade.markdownRenderer;
 
+  // For page view
   optionsGenerators.customGenerateViewOptions = (...args) => {
     const options = optionsGenerators.generateViewOptions(...args);
     const { a } = options.components;
     options.components.a = helloGROWI(a); // Wrap the default component
     return options;
+  };
+
+  // For preview
+  optionsGenerators.customGeneratePreviewOptions = (...args) => {
+    const preview = optionsGenerators.generatePreviewOptions(...args);
+    const { a } = preview.components;
+    preview.components.a = helloGROWI(a); // Wrap the default component
+    return preview;
   };
 };
 
